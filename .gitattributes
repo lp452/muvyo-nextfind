@@ -1,3 +1,16 @@
+# 默认文本按 LF 存放
 * text=auto eol=lf
-*.png binary
-*.jpg binary
+.gitignore text eol=lf
+.gitattributes text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.sh text eol=lf
+.githooks/* text eol=lf
+
+# 签名产物必须逐字节保留：签名里是文件 SHA-256，换行被改写就装不上
+# 注意 gitattributes 是「后面的规则覆盖前面的」，这些必须放在最后
+index.json -text
+index.json.sig -text
+plugins/** -text
+plugins/**/* -text

@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "certificate": {
+  "certificate": {
+   "aud": "mediavault-addon-author",
+   "author": "lp452",
+   "author_id": "gh-24623391",
+   "content_key": "6Ev0NmJEU70LQApK/WT/kM2s9a+W6V4a5olgtoIDOyA=",
+   "content_key_version": 1,
+   "expires_at": 1825119171,
+   "installation_key": "OvBgfXlCAu62pfrgj/HrFY5DE4rSHOEizS5Hr/UPOLY=",
+   "issued_at": 1793583171,
+   "namespace": "lp452",
+   "public_key": "+Rx4+WcyVYbB9EGkrMAL+sXJTWvV22wtYEXd/DRNtmg=",
+   "serial": 23,
+   "version": 1
+  },
+  "signature": "dAvDsUSThxtwrpgGvIzLYSagPd9ImU8Y+T6ZOosRx+n5dLq2omke+UMBIFG24LCF734FE0GaTaKeOcY445Q0Cw=="
+ },
+ "payload": {
+  "plugin_id": "lp452.nextfind",
+  "version": "1.0.0",
+  "files": {
+   "README.md": "f94188c24e494928892d286d46dd9d4e9fdfa15bb903ec8371f975e0e044f8fe",
+   "encrypted.json": "2b39380d9b06b7c7f244e7be982cd121105c88ada3c2676df9766d58a4b5d08a",
+   "manifest.json": "65436a5e815770082c161a68530d9fcafb13c201c76b8d703430868c3cce0bee"
+  }
+ },
+ "signature": "tZlhxYG39R/nbclesoExYZ2g7DXB7nlz6vUBH5kjFhlchRsN7V36QFOeL4HIvkQIAIP1xiHu1gd8xvXPlbmFBQ=="
+}

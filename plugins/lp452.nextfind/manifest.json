@@ -1,0 +1,110 @@
+{
+  "api": 1,
+  "id": "lp452.nextfind",
+  "name": "NextFind 影巢",
+  "version": "1.0.0",
+  "author": "lp452",
+  "description": "通过自建的 NextFind 检索影巢（HDHive）与频道资源，返回 115 分享链接或电驴链接；需要积分解锁的资源在选中时才换取链接；附带影巢每日签到。",
+  "release_notes": "1.0.0：资源搜索、按需换取链接（积分）、影巢每日签到、账号信息。",
+  "min_mv_version": "3.13.0",
+  "entry": "main.js",
+  "permissions": {
+    "domains": [],
+    "service": {
+      "label": "NextFind 服务地址",
+      "help": "你自己部署的 NextFind，例如 http://192.168.1.21:8092。局域网地址直接填，公网地址要用 https。"
+    }
+  },
+  "config": [
+    {
+      "key": "username",
+      "label": "NextFind 账号",
+      "type": "text",
+      "required": true,
+      "help": "NextFind 后台的登录账号，用于插件自动登录拿会话。"
+    },
+    {
+      "key": "password",
+      "label": "NextFind 密码",
+      "type": "secret",
+      "required": true
+    },
+    {
+      "key": "max_items",
+      "label": "最多返回条数",
+      "type": "number",
+      "min": 1,
+      "max": 200,
+      "step": 1,
+      "unit": "条",
+      "default": "60"
+    },
+    {
+      "key": "only_115",
+      "label": "只返回 115 资源",
+      "type": "bool",
+      "default": "false",
+      "help": "打开后电驴等其它类型的结果会被丢掉。"
+    },
+    {
+      "key": "hide_locked",
+      "label": "隐藏需要积分的资源",
+      "type": "bool",
+      "default": "false",
+      "help": "打开后只返回免费或已解锁的资源，不会产生积分消耗。"
+    }
+  ],
+  "settings": {
+    "description": "这个插件把 Muvyo 的资源搜索接到你自己的 NextFind 上。影巢（HDHive）的资源由 NextFind 代为访问和兑换，插件本身不直连影巢，所以不受影巢网页的 Cloudflare 验证影响。\n\n需要积分的资源不会在搜索时扣分：只有你在 Muvyo 里点「获取链接」，或者订阅里显式允许时，才会调用 NextFind 解锁。",
+    "links": [
+      {
+        "title": "NextFind 文档",
+        "url": "https://wiki.nextemby.com/nextfind/"
+      }
+    ],
+    "columns": 2,
+    "sections": [
+      {
+        "title": "连接",
+        "description": "插件用这个账号登录 NextFind，会话保存在插件自己的存储里。",
+        "fields": [
+          "username",
+          "password"
+        ]
+      },
+      {
+        "title": "结果",
+        "fields": [
+          "max_items",
+          "only_115",
+          "hide_locked"
+        ],
+        "columns": 1
+      }
+    ]
+  },
+  "capabilities": {
+    "search": {
+      "link_types": [
+        "115",
+        "ed2k",
+        "magnet"
+      ],
+      "supports_tmdb": true,
+      "resolve": true,
+      "resolve_cost": "points"
+    },
+    "tasks": [
+      {
+        "id": "checkin",
+        "title": "影巢每日签到",
+        "description": "调用 NextFind 的签到接口，为它配置的影巢（HDHive）账号签到，结果里带当前积分。",
+        "interval_minutes": 1440,
+        "kind": "checkin"
+      }
+    ],
+    "account": {
+      "title": "影巢"
+    }
+  }
+}
