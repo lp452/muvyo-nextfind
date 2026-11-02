@@ -2,14 +2,16 @@
   "api": 1,
   "id": "lp452.nextfind",
   "name": "NextFind 影巢",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "lp452",
   "description": "通过自建的 NextFind 检索影巢（HDHive）与频道资源，返回 115 分享链接或电驴链接；需要积分解锁的资源在选中时才换取链接。",
-  "release_notes": "1.0.3：美化搜索结果卡片。标题统一成「片名 (年份) 集数 分辨率 来源 编码 HDR 字幕 -压制组」，去掉 [剧集·115]、[tmdbid-223911] 这类内部标记和表情符号；标签不再重复 Muvyo 已能解析的分辨率/字幕/大小，音频编码单独展示，「官方」「AI译本」改用醒目徽标；卡片副标题不再重复标题内容。",
+  "release_notes": "1.0.4：结果里能直接看到文件清单和真实集号（零积分的只读预览）；按「能直接用 → 画质 → 集数完整」排序，好资源自动排前面；画质按实际文件名校正，不再被发布者写的「1080p + 2160P」误导；新增「已验证 / 链接失效」徽标；支持把 re0.me 资源页转发给机器人解析；订阅场景会按筛选条件预筛、尊重请求条数。",
   "min_mv_version": "3.13.0",
   "entry": "main.js",
   "permissions": {
-    "domains": [],
+    "domains": [
+      "re0.me"
+    ],
     "service": {
       "label": "NextFind 服务地址",
       "help": "你自己部署的 NextFind，例如 http://192.168.1.21:8092。局域网地址直接填，公网地址要用 https。"
@@ -42,10 +44,21 @@
       "type": "bool",
       "default": "false",
       "help": "打开后只返回免费或已解锁的资源，不会产生积分消耗。"
+    },
+    {
+      "key": "preview_count",
+      "label": "文件清单预览条数",
+      "type": "number",
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "unit": "条",
+      "default": "10",
+      "help": "对排在最前面的几条调用只读预览，不消耗积分，能在卡片上看到里面有哪些文件、真实集号和画质。填 0 关闭。订阅搜索为了速度不做预览。"
     }
   ],
   "settings": {
-    "description": "这个插件把 Muvyo 的资源搜索接到你自己的 NextFind 上。影巢（HDHive）的资源由 NextFind 代为访问和兑换，插件本身不直连影巢，所以不受影巢网页的 Cloudflare 验证影响。\n\n需要积分的资源不会在搜索时扣分：只有你在 Muvyo 里点「获取链接」，或者订阅里显式允许时，才会调用 NextFind 解锁。\n\n影巢签到请在 NextFind 自己的定时任务里设置，插件不重复执行。",
+    "description": "这个插件把 Muvyo 的资源搜索接到你自己的 NextFind 上。影巢（HDHive）的资源由 NextFind 代为访问和兑换，插件本身不直连影巢，所以不受影巢网页的 Cloudflare 验证影响。\n\n需要积分的资源不会在搜索时扣分：只有你在 Muvyo 里点「获取链接」，或者订阅里显式允许时，才会调用 NextFind 解锁。\n\n开启文件清单预览后，排在最前面的资源会先做一次只读检查（同样不扣积分），卡片上就能看到里面有哪些文件、真实集号和画质。\n\n影巢签到请在 NextFind 自己的定时任务里设置，插件不重复执行。",
     "links": [
       {
         "title": "NextFind 文档",
@@ -66,7 +79,8 @@
         "title": "结果",
         "fields": [
           "only_115",
-          "hide_locked"
+          "hide_locked",
+          "preview_count"
         ],
         "columns": 1
       }
@@ -81,7 +95,10 @@
       ],
       "supports_tmdb": true,
       "resolve": true,
-      "resolve_cost": "points"
+      "resolve_cost": "points",
+      "link_hosts": [
+        "re0.me"
+      ]
     },
     "account": {
       "title": "影巢"
