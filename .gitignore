@@ -1,0 +1,15 @@
+# 源码不提交，只提交签名产物
+src/
+
+# 签名凭据与私钥，绝对不能提交
+muvyo-signing.json
+*signing*.json
+repo-signing.pem
+*.pem
+*.key
+mv_addon.py
+
+# 本地调试产物
+node_modules/
+dist/
+test/tmp/
