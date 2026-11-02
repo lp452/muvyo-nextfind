@@ -3,10 +3,18 @@
 给 [Muvyo](https://github.com/thsrite/muvyo-addon-guide) 写的第三方插件：**NextFind 影巢**。
 把 Muvyo 的资源搜索 / 订阅 / 机器人搜索接到你自己部署的 NextFind 上，顺带做影巢（HDHive）每日签到。
 
+## 安装
+
+Muvyo → 设置中心 → 插件 → 第三方插件 → 插件仓库，填：
+
+```
+https://github.com/lp452/muvyo-nextfind
+```
+
 ## 目录
 
 ```
-muvyo-addon-nextfind/
+muvyo-nextfind/
   src/lp452.nextfind/         插件源码（发布时不要提交）
     manifest.json
     main.js
