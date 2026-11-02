@@ -9,7 +9,7 @@ const path = require('path');
 const vm = require('vm');
 const { createMv } = require('./mv-shim');
 
-const PLUGIN_DIR = path.join(__dirname, '..', 'src', 'luo.nextfind');
+const PLUGIN_DIR = path.join(__dirname, '..', 'src', 'lp452.nextfind');
 const manifest = JSON.parse(fs.readFileSync(path.join(PLUGIN_DIR, 'manifest.json'), 'utf8'));
 const code = fs.readFileSync(path.join(PLUGIN_DIR, manifest.entry || 'main.js'), 'utf8');
 

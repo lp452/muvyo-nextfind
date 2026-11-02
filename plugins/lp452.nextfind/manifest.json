@@ -2,10 +2,10 @@
   "api": 1,
   "id": "lp452.nextfind",
   "name": "NextFind 影巢",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "lp452",
   "description": "通过自建的 NextFind 检索影巢（HDHive）与频道资源，返回 115 分享链接或电驴链接；需要积分解锁的资源在选中时才换取链接；附带影巢每日签到。",
-  "release_notes": "1.0.0：资源搜索、按需换取链接（积分）、影巢每日签到、账号信息。",
+  "release_notes": "1.0.1：修复资源列表只返回 2 条的问题——NextFind 的列表接口是流式分批推送，旧版本只读了第一帧，现在累积全部帧并合并同源条目。",
   "min_mv_version": "3.13.0",
   "entry": "main.js",
   "permissions": {

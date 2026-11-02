@@ -1,16 +1,16 @@
 {
-  "name": "lp452 的 Muvyo 插件",
-  "sequence": 1,
-  "plugins": [
-    {
-      "id": "lp452.nextfind",
-      "name": "NextFind 影巢",
-      "version": "1.0.0",
-      "description": "通过自建的 NextFind 检索影巢（HDHive）与频道资源，返回 115 分享链接或电驴链接；需要积分解锁的资源在选中时才换取链接；附带影巢每日签到。",
-      "author": "lp452",
-      "path": "plugins/lp452.nextfind",
-      "api": 1
-    }
-  ],
-  "public_key": "2DEpcyPgMNnQfeksI7n6jfcm+ME23+tVLLEpa5+1bR4="
+ "name": "lp452 的 Muvyo 插件",
+ "sequence": 3,
+ "plugins": [
+  {
+   "id": "lp452.nextfind",
+   "name": "NextFind 影巢",
+   "version": "1.0.1",
+   "description": "通过自建的 NextFind 检索影巢（HDHive）与频道资源，返回 115 分享链接或电驴链接；需要积分解锁的资源在选中时才换取链接；附带影巢每日签到。",
+   "author": "lp452",
+   "path": "plugins/lp452.nextfind",
+   "api": 1
+  }
+ ],
+ "public_key": "2DEpcyPgMNnQfeksI7n6jfcm+ME23+tVLLEpa5+1bR4="
 }
