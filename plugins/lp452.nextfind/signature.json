@@ -19,12 +19,12 @@
  },
  "payload": {
   "plugin_id": "lp452.nextfind",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "files": {
    "README.md": "f94188c24e494928892d286d46dd9d4e9fdfa15bb903ec8371f975e0e044f8fe",
-   "encrypted.json": "a69908b1310c8f645d6d4f99768d016e1ac69fad5f5e727dfa922690d7aebe78",
-   "manifest.json": "0a4b758123c7737690799da2f02bdfa080c1801645a3bb12e8c52766b4b177a0"
+   "encrypted.json": "87e097c4faf02db47438c7ca05f6ed89739695f5dbc31b7261b66278ee06acdf",
+   "manifest.json": "6543581e6ac384b1aedc4116710bd610542842068192ec1564d0d413217c61b9"
   }
  },
- "signature": "FY6MoXRd3QUCp3yYtPUsHKf4Xv/bHCTIuvF0ss/Jnmd1IGgJbsyP1AodoNEmKPzvs7EPdAP90VnVNBDKfpF4CA=="
+ "signature": "9fbJL02dYHBPRNSxoDvAM+M8wxLc3iqIxh2F2Qr5dGURwcRHKAu6scIBPOvpieD0LcGuIFIxJpVilZfB97uqAw=="
 }
