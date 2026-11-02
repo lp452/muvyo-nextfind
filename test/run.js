@@ -56,9 +56,9 @@ function head(t) { console.log('\n' + '='.repeat(12) + ' ' + t + ' ' + '='.repea
     console.log(JSON.stringify(sandbox.search({ keyword: 'zzzz不存在的片子zzzz', tmdb_id: 0, media_type: '', year: 0, limit: 10 })));
   }
 
-  if (which === 'all' || which === 'checkin') {
-    head('scheduledTask:checkin');
-    console.log(JSON.stringify(sandbox.scheduledTask({ task: 'checkin' })));
+  if (which === 'checkin') {
+    head('scheduledTask 应已移除');
+    console.log('typeof scheduledTask =', typeof sandbox.scheduledTask);
   }
 
   if (which === 'resolve') {

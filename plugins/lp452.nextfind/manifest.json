@@ -2,10 +2,10 @@
   "api": 1,
   "id": "lp452.nextfind",
   "name": "NextFind 影巢",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "lp452",
-  "description": "通过自建的 NextFind 检索影巢（HDHive）与频道资源，返回 115 分享链接或电驴链接；需要积分解锁的资源在选中时才换取链接；附带影巢每日签到。",
-  "release_notes": "1.0.1：修复资源列表只返回 2 条的问题——NextFind 的列表接口是流式分批推送，旧版本只读了第一帧，现在累积全部帧并合并同源条目。",
+  "description": "通过自建的 NextFind 检索影巢（HDHive）与频道资源，返回 115 分享链接或电驴链接；需要积分解锁的资源在选中时才换取链接。",
+  "release_notes": "1.0.2：搜索结果不再受「最多返回条数」限制，热门剧能返回全部（仙逆 103 条）；同一分享码下不同集数范围不再被误合并；移除插件内的定时签到，改由 NextFind 自己负责。",
   "min_mv_version": "3.13.0",
   "entry": "main.js",
   "permissions": {
@@ -30,16 +30,6 @@
       "required": true
     },
     {
-      "key": "max_items",
-      "label": "最多返回条数",
-      "type": "number",
-      "min": 1,
-      "max": 200,
-      "step": 1,
-      "unit": "条",
-      "default": "60"
-    },
-    {
       "key": "only_115",
       "label": "只返回 115 资源",
       "type": "bool",
@@ -55,7 +45,7 @@
     }
   ],
   "settings": {
-    "description": "这个插件把 Muvyo 的资源搜索接到你自己的 NextFind 上。影巢（HDHive）的资源由 NextFind 代为访问和兑换，插件本身不直连影巢，所以不受影巢网页的 Cloudflare 验证影响。\n\n需要积分的资源不会在搜索时扣分：只有你在 Muvyo 里点「获取链接」，或者订阅里显式允许时，才会调用 NextFind 解锁。",
+    "description": "这个插件把 Muvyo 的资源搜索接到你自己的 NextFind 上。影巢（HDHive）的资源由 NextFind 代为访问和兑换，插件本身不直连影巢，所以不受影巢网页的 Cloudflare 验证影响。\n\n需要积分的资源不会在搜索时扣分：只有你在 Muvyo 里点「获取链接」，或者订阅里显式允许时，才会调用 NextFind 解锁。\n\n影巢签到请在 NextFind 自己的定时任务里设置，插件不重复执行。",
     "links": [
       {
         "title": "NextFind 文档",
@@ -75,7 +65,6 @@
       {
         "title": "结果",
         "fields": [
-          "max_items",
           "only_115",
           "hide_locked"
         ],
@@ -94,15 +83,6 @@
       "resolve": true,
       "resolve_cost": "points"
     },
-    "tasks": [
-      {
-        "id": "checkin",
-        "title": "影巢每日签到",
-        "description": "调用 NextFind 的签到接口，为它配置的影巢（HDHive）账号签到，结果里带当前积分。",
-        "interval_minutes": 1440,
-        "kind": "checkin"
-      }
-    ],
     "account": {
       "title": "影巢"
     }
